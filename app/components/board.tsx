@@ -2,8 +2,11 @@
 import { Coordinate } from "../type";
 import { useState } from "react";
 
-export default function Board({chessGrids, Play}){
-    const [clickStatus, setClickStatus] = useState([]);
+export default function Board({chessGrids, Play}:{
+    chessGrids: number[][];  
+    Play: (start: Coordinate, target: Coordinate) => void;  
+  }){
+    const [clickStatus, setClickStatus] = useState<Coordinate[]>([]);
 
     function updateClickStatus(row:number, col:number){
         const cor: Coordinate = {
@@ -56,7 +59,7 @@ export default function Board({chessGrids, Play}){
                 hoverColor = '';
                 clickColor = '';
             }
-        tempGrids.push(<div tabIndex='0' className={`${border} inline-block box-border w-20 h-20 m-0 ${color} hover:${hoverColor} focus:${clickColor}`} key={`${i}-${j}`} onClick={()=>{updateClickStatus(i, j)}}></div>);
+        tempGrids.push(<div tabIndex={0} className={`${border} inline-block box-border w-20 h-20 m-0 ${color} hover:${hoverColor} focus:${clickColor}`} key={`${i}-${j}`} onClick={()=>{updateClickStatus(i, j)}}></div>);
         }
         boardGrids.push(<div key={i} className="m-0 box-border">{tempGrids}</div>);
     }
