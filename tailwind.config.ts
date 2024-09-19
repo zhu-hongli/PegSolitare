@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      lineHeight:{
+        '0':'0'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
